@@ -51,7 +51,6 @@ class CoordPicker(QtWidgets.QDialog):
     def mouseReleaseEvent(self, event: QtGui.QMouseEvent) -> None:
         if event.button() == QtCore.Qt.LeftButton:
             coords = pyautogui.position()
-            print(coords[0], ", ", coords[1])
             self.acceptedSignal.emit(coords)
             self.done(0)
 

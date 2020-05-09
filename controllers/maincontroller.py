@@ -22,10 +22,11 @@ from controllers.fishing import Fishing
 from controllers.mining import Mining
 from controllers.rapidfire import RapidFire
 from models.choices import Choices
+from models.fishpole import fishPoleColors
 from views.choicewindow import ChoiceWindow
 from views.coordpicker import CoordPicker
 
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui
 
 
 class MainController:
@@ -45,9 +46,11 @@ class MainController:
         self.coordPicker.acceptedSignal.connect(self.coordPickerAccepted)
         self.choiceWindow.show()
 
-    def clicked(self, choice, extraArg=None):
+    def clicked(self, choice, extraArgs=None):
         if choice == Choices.FISH:
+            self.choiceWindow.hide()
             self.coordPicker.exec()
+            self.choiceWindow.show()
         if choice == Choices.MINE:
             self.mining.active = True
             self.mining.start()
@@ -60,12 +63,24 @@ class MainController:
             self.rapidFire.active = True
             self.rapidFire.start()
 
+        # minimize main window
+        self.choiceWindow.minimize()
+
+    # Once coordinates are accepted, show color picker for bobber color
     def coordPickerAccepted(self, coordTuple):
         self.coordPicker.close()
         self.fishing.setCursorXY(coordTuple)
-        #widget = QtWidgets.QColorDialog(self.choiceWindow.window)
-        #widget.exec()
-        self.choiceWindow.minimize()
+
+        widget = QtWidgets.QColorDialog(self.choiceWindow.window)
+        i = 0
+        for key, value in fishPoleColors.items():
+            widget.setCustomColor(i, QtGui.QColor(*value))
+            i += 1
+
+        widget.exec()
+        selectedColor = widget.selectedColor()
+        self.fishing.setBobberColor((selectedColor.red(), selectedColor.green(), selectedColor.blue()))
+
         self.fishing.active = True
         self.fishing.start()
 
