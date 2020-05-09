@@ -174,18 +174,18 @@
     <property name="title">
      <string>Help</string>
     </property>
-    <addaction name="actionAbout_QT"/>
-    <addaction name="actionAbout"/>
+    <addaction name="actAboutQT"/>
+    <addaction name="actAbout"/>
    </widget>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionAbout_QT">
+  <action name="actAboutQT">
    <property name="text">
     <string>About QT</string>
    </property>
   </action>
-  <action name="actionAbout">
+  <action name="actAbout">
    <property name="text">
     <string>About</string>
    </property>

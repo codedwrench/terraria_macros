@@ -22,12 +22,12 @@ from controllers.fishing import Fishing
 from controllers.mining import Mining
 from controllers.rapidfire import RapidFire
 from models.choices import Choices
-from views.choicedialog import ChoiceDialog
+from views.choicewindow import ChoiceWindow
 from views.coordpicker import CoordPicker
 
 
 class MainController:
-    choiceDialog = 0
+    choiceWindow = 0
     coordPicker = 0
     fishing = 0
     mining = 0
@@ -37,11 +37,11 @@ class MainController:
         self.fishing = Fishing()
         self.mining = Mining()
         self.rapidFire = RapidFire()
-        self.choiceDialog = ChoiceDialog(self.clicked)
+        self.choiceWindow = ChoiceWindow(self.clicked)
         self.coordPicker = CoordPicker()
         self.coordPicker.initUI()
         self.coordPicker.acceptedSignal.connect(self.coordPickerAccepted)
-        self.choiceDialog.show()
+        self.choiceWindow.show()
 
     def clicked(self, choice):
         if choice == Choices.FISH:
@@ -58,8 +58,8 @@ class MainController:
         self.fishing.active = True
         self.fishing.start()
 
-    def showDialog(self, args=None):
-        self.choiceDialog.show()
+    def showWindow(self, args=None):
+        self.choiceWindow.show()
         self.fishing.active = False
         self.mining.active = False
         self.rapidFire.active = False
@@ -68,4 +68,4 @@ class MainController:
         self.rapidFire.exit()
 
     def hideDialog(self):
-        self.choiceDialog.hide()
+        self.choiceWindow.hide()

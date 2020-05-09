@@ -50,7 +50,7 @@ def main():
 
     pyautogui.FAILSAFE = True
     print("Starting")
-    keyboard.on_press_key('num 7', mainController.showDialog)
+    keyboard.on_press_key('num 7', mainController.showWindow)
     keyboard.on_press_key('num 8', useMagicMirror)
     keyboard.on_press_key('b', useMagicMirror)
 
