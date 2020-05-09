@@ -57,20 +57,19 @@ class MainController:
             self.rapidFire.start()
 
     def coordPickerAccepted(self, coordTuple):
+        self.coordPicker.close()
         self.fishing.setCursorXY(coordTuple)
         #widget = QtWidgets.QColorDialog(self.choiceWindow.window)
         #widget.exec()
+        self.choiceWindow.minimize()
         self.fishing.active = True
         self.fishing.start()
 
-    def showWindow(self, args=None):
-        self.choiceWindow.show()
+    def restoreWindow(self, args=None):
+        self.choiceWindow.restore()
         self.fishing.active = False
         self.mining.active = False
         self.rapidFire.active = False
         self.mining.exit()
         self.fishing.exit()
         self.rapidFire.exit()
-
-    def hideDialog(self):
-        self.choiceWindow.hide()

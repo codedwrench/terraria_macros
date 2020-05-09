@@ -39,22 +39,15 @@ class Fishing(QtCore.QThread):
     searchRangeX = 30
     searchRangeY = 4
 
-    # The cursor pos somehow does not match the actual pos of the cursor
-    # on screen 10 and 38 seem to correct the issue
-    cursorCorrectionValueX = 10
-    cursorCorrectionValueY = 38
-
     def __init__(self, parent=None):
         QtCore.QThread.__init__(self, parent)
 
     # Sets cursor position to the right coordinates, also initializes the pos
     # of the bobber, the thing above the hook of the fishing rod.
     def setCursorXY(self, coordTuple):
-        self.fishingPole.pointerXCoord = coordTuple[0] + \
-                                         self.cursorCorrectionValueX
+        self.fishingPole.pointerXCoord = coordTuple[0]
 
-        self.fishingPole.pointerYCoord = coordTuple[1] + \
-                                         self.cursorCorrectionValueY
+        self.fishingPole.pointerYCoord = coordTuple[1]
 
         self.fishingPole.bobberXCoord = self.fishingPole.pointerXCoord
         self.fishingPole.bobberYCoord = self.fishingPole.pointerYCoord
@@ -94,8 +87,8 @@ class Fishing(QtCore.QThread):
                             print(x, ",", y)
                             self.found = True
 
-                            # This sets the position of the bobber and makes the
-                            # range to find the bobber in small
+                            # This sets the position of the bobber and makes
+                            # the range to find the bobber in small
                             if not self.calibrated:
                                 self.calibrated = True
                                 self.searchRangeX = 1
@@ -103,6 +96,8 @@ class Fishing(QtCore.QThread):
                                 fishingPole.bobberXCoord = x
                                 fishingPole.bobberYCoord = y
 
+                # Add active here as well, so the program won't click one more
+                # time if you're back in the main menu.
                 if not self.found and self.active:
                     mouseDown(x=fishingPole.pointerXCoord,
                               y=fishingPole.pointerYCoord)

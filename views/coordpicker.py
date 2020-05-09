@@ -19,6 +19,7 @@
 
 
 from PyQt5 import QtWidgets, QtGui, QtCore
+import pyautogui
 
 # This is a coordinate window picker, it allows you to click on the screen at a
 # specific coordinate without disrupting the application behind it
@@ -27,9 +28,6 @@ from PyQt5 import QtWidgets, QtGui, QtCore
 class CoordPicker(QtWidgets.QDialog):
     instructionsText = "Please click on the spot \n" \
                        "where you want the fishing line to be cast out"
-
-    caughtX = 0
-    caughtY = 0
 
     acceptedSignal = QtCore.pyqtSignal(tuple)
 
@@ -53,10 +51,9 @@ class CoordPicker(QtWidgets.QDialog):
 
     def mouseReleaseEvent(self, event: QtGui.QMouseEvent) -> None:
         if event.button() == QtCore.Qt.LeftButton:
-            self.caughtX = event.pos().x()
-            self.caughtY = event.pos().y()
-            print(self.caughtX, ", ", self.caughtY)
-            self.acceptedSignal.emit((self.caughtX, self.caughtY))
+            coords = pyautogui.position()
+            print(coords[0], ", ", coords[1])
+            self.acceptedSignal.emit(coords)
             self.done(0)
 
 

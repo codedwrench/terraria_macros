@@ -80,7 +80,11 @@ class ChoiceWindow:
 
     def show(self):
         self.window.show()
-        self.window.activateWindow()
 
-    def hide(self):
-        self.window.hide()
+    def minimize(self):
+        self.window.setWindowState(self.window.windowState() | QtCore.Qt.WindowMinimized)
+
+    def restore(self):
+        self.window.raise_()
+        self.window.activateWindow()
+        self.window.setWindowState((self.window.windowState() & ~QtCore.Qt.WindowMinimized) | QtCore.Qt.WindowActive)
