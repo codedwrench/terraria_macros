@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
 # This file is part of terraria_macros.
@@ -18,43 +17,3 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import atexit
-import keyboard
-import pyautogui
-import sys
-
-from PyQt5 import QtWidgets
-
-from controllers.maincontroller import MainController
-from models.hotbar import Hotbar
-
-
-hotbar = Hotbar()
-
-
-def exitHandler():
-    keyboard.unhook_all()
-
-
-def useMagicMirror(arg):
-    pyautogui.keyDown(hotbar.mirrorSlot)
-    pyautogui.keyUp(hotbar.mirrorSlot)
-    pyautogui.mouseDown()
-    pyautogui.mouseUp()
-
-
-def main():
-    atexit.register(exitHandler)
-    app = QtWidgets.QApplication(sys.argv)
-    mainController = MainController()
-
-    pyautogui.FAILSAFE = True
-    print("Starting")
-    keyboard.on_press_key(71, mainController.showWindow)
-    keyboard.on_press_key(72, useMagicMirror)
-
-    app.exec()
-
-
-if __name__ == "__main__":
-    main()

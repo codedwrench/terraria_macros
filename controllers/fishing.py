@@ -103,7 +103,7 @@ class Fishing(QtCore.QThread):
                                 fishingPole.bobberXCoord = x
                                 fishingPole.bobberYCoord = y
 
-                if not self.found:
+                if not self.found and self.active:
                     mouseDown(x=fishingPole.pointerXCoord,
                               y=fishingPole.pointerYCoord)
                     mouseUp()

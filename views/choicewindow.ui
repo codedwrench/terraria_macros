@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>320</width>
-    <height>307</height>
+    <width>366</width>
+    <height>421</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -75,6 +75,9 @@
     </item>
     <item row="5" column="5" colspan="3">
      <layout class="QHBoxLayout" name="btnLeftRightHold">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
       <item>
        <widget class="QPushButton" name="btnLeftHold">
         <property name="maximumSize">
@@ -89,19 +92,6 @@
        </widget>
       </item>
       <item>
-       <spacer name="spcrLeftRightHold">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
        <widget class="QPushButton" name="btnRightHold">
         <property name="maximumSize">
          <size>
@@ -114,6 +104,19 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QLineEdit" name="inpCustomHold">
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maxLength">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
     <item row="6" column="5" colspan="3">
@@ -123,7 +126,7 @@
         <property name="maximumSize">
          <size>
           <width>50</width>
-          <height>16777215</height>
+          <height>30</height>
          </size>
         </property>
         <property name="text">
@@ -132,28 +135,28 @@
        </widget>
       </item>
       <item>
-       <spacer name="spcrLeftRightRapidFire">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>100</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
        <widget class="QPushButton" name="btnRapidFireRight">
         <property name="maximumSize">
          <size>
           <width>50</width>
-          <height>16777215</height>
+          <height>30</height>
          </size>
         </property>
         <property name="text">
          <string>Right</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="inpCustomRapidFire">
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maxLength">
+         <number>10</number>
         </property>
        </widget>
       </item>
@@ -166,7 +169,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>320</width>
+     <width>366</width>
      <height>26</height>
     </rect>
    </property>

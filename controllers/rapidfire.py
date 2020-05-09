@@ -26,14 +26,18 @@ from PyQt5 import QtCore
 class RapidFire(QtCore.QThread):
     active = False
     executing = False
+    button = 'left'
+
+    def setButton(self, button):
+        self.button = button
 
     def run(self):
         while self.active:
             if not self.executing:
                 self.executing = True
                 rapid_fire_delay = 0.01
-                pyautogui.mouseDown()
-                pyautogui.mouseUp()
+                pyautogui.mouseDown(button=self.button)
+                pyautogui.mouseUp(button=self.button)
                 time.sleep(rapid_fire_delay)
                 self.executing = False
 

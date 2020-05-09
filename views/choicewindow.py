@@ -27,7 +27,6 @@ class ChoiceWindow:
     choice = Choices.NOTHING
     window = 0
     clickCallback = 0
-    coordPicker = 0
     aboutText = "<b>terraria_macros</b><br><br>" \
                 "This program provides some macros you can use for the game: Terraria<br><br>" \
                 "Copyright © 2020 Rick de Bondt<br><br>" \
@@ -68,7 +67,6 @@ class ChoiceWindow:
 
     def clicked(self, choice):
         self.choice = choice
-        self.window.hide()
         self.clickCallback(self.choice)
 
     def fishClicked(self):
@@ -82,6 +80,7 @@ class ChoiceWindow:
 
     def show(self):
         self.window.show()
+        self.window.activateWindow()
 
     def hide(self):
         self.window.hide()

@@ -24,7 +24,7 @@ from PyQt5 import QtWidgets, QtGui, QtCore
 # specific coordinate without disrupting the application behind it
 
 
-class CoordPicker(QtWidgets.QWidget):
+class CoordPicker(QtWidgets.QDialog):
     instructionsText = "Please click on the spot \n" \
                        "where you want the fishing line to be cast out"
 
@@ -33,8 +33,8 @@ class CoordPicker(QtWidgets.QWidget):
 
     acceptedSignal = QtCore.pyqtSignal(tuple)
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent=parent)
         self.lblInstructions = QtWidgets.QLabel(self)
         self.initUI()
 
@@ -55,8 +55,9 @@ class CoordPicker(QtWidgets.QWidget):
         if event.button() == QtCore.Qt.LeftButton:
             self.caughtX = event.pos().x()
             self.caughtY = event.pos().y()
+            print(self.caughtX, ", ", self.caughtY)
             self.acceptedSignal.emit((self.caughtX, self.caughtY))
-            self.hide()
+            self.done(0)
 
 
 

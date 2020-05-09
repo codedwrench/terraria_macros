@@ -25,6 +25,8 @@ from models.choices import Choices
 from views.choicewindow import ChoiceWindow
 from views.coordpicker import CoordPicker
 
+from PyQt5 import QtWidgets
+
 
 class MainController:
     choiceWindow = 0
@@ -38,23 +40,26 @@ class MainController:
         self.mining = Mining()
         self.rapidFire = RapidFire()
         self.choiceWindow = ChoiceWindow(self.clicked)
-        self.coordPicker = CoordPicker()
+        self.coordPicker = CoordPicker(self.choiceWindow.window)
         self.coordPicker.initUI()
         self.coordPicker.acceptedSignal.connect(self.coordPickerAccepted)
         self.choiceWindow.show()
 
     def clicked(self, choice):
         if choice == Choices.FISH:
-            self.coordPicker.show()
+            self.coordPicker.exec()
         if choice == Choices.MINE:
             self.mining.active = True
             self.mining.start()
         if choice == Choices.RAPID_FIRE_BUTTON_LEFT:
+            self.rapidFire.setButton('left')
             self.rapidFire.active = True
             self.rapidFire.start()
 
     def coordPickerAccepted(self, coordTuple):
         self.fishing.setCursorXY(coordTuple)
+        #widget = QtWidgets.QColorDialog(self.choiceWindow.window)
+        #widget.exec()
         self.fishing.active = True
         self.fishing.start()
 
