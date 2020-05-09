@@ -12,7 +12,8 @@ a set of terraria macros written in python
 # Instructions for Debian
 ```bash 
 sudo apt-get install python3 python3-pip python3-tk python3-pyqt5 kbd
-pip3 install keyboard pyautogui
+sudo pip3 install keyboard pyautogui
+sudo ./main.py (pyautogui requires root access on linux :'( )
 ```
 
 # License:
