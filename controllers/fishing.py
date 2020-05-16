@@ -31,6 +31,7 @@ class Fishing(QtCore.QThread):
     executing = False
     calibrated = False
     found = False
+    firstTime = True
 
     fishingPole = FishPole()
     hotbar = Hotbar()
@@ -58,8 +59,14 @@ class Fishing(QtCore.QThread):
         self.fishingPole.bobberColor = colorTuple
 
     def run(self):
-        fishingPole = self.fishingPole
-        time.sleep(1)
+        if self.firstTime:
+            fishingPole = self.fishingPole
+            time.sleep(0.5)
+            # Pull the bobber up
+            mouseDown()
+            mouseUp()
+            time.sleep(0.5)
+
         while self.active:
             if not self.executing:
                 self.executing = True
@@ -107,3 +114,6 @@ class Fishing(QtCore.QThread):
                     mouseUp()
 
                 self.executing = False
+
+        # After loop reset first time running
+        self.firstTime = True

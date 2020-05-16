@@ -26,15 +26,10 @@ import pyautogui
 
 
 class CoordPicker(QtWidgets.QDialog):
-    instructionsText = "Please click on the spot \n" \
-                       "where you want the fishing line to be cast out"
+    instructionsText = "Please click on the bobber where you cast out the " \
+                       "fishing line"
 
     acceptedSignal = QtCore.pyqtSignal(tuple)
-
-    def __init__(self, parent):
-        super().__init__(parent=parent)
-        self.lblInstructions = QtWidgets.QLabel(self)
-        self.initUI()
 
     def initUI(self):
         desktop = QtWidgets.QApplication.desktop()
