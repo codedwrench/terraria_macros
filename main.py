@@ -50,8 +50,8 @@ def main():
 
     pyautogui.FAILSAFE = True
     print("Starting")
-    keyboard.on_press_key(71, mainController.restoreWindow)
-    keyboard.on_press_key(72, useMagicMirror)
+    keyboard.add_hotkey(71, mainController.restoreWindow)  # 71 is num 7
+    keyboard.add_hotkey(72, useMagicMirror)  # 72 is num 8
 
     app.exec()
 

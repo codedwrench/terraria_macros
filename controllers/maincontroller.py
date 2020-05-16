@@ -45,7 +45,7 @@ class MainController:
         self.coordPicker.acceptedSignal.connect(self.coordPickerAccepted)
         self.choiceWindow.show()
 
-    def clicked(self, choice):
+    def clicked(self, choice, extraArg=None):
         if choice == Choices.FISH:
             self.coordPicker.exec()
         if choice == Choices.MINE:
@@ -53,6 +53,10 @@ class MainController:
             self.mining.start()
         if choice == Choices.RAPID_FIRE_BUTTON_LEFT:
             self.rapidFire.setButton('left')
+            self.rapidFire.active = True
+            self.rapidFire.start()
+        if choice == Choices.RAPID_FIRE_BUTTON_RIGHT:
+            self.rapidFire.setButton('right')
             self.rapidFire.active = True
             self.rapidFire.start()
 

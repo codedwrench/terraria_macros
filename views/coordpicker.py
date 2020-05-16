@@ -39,7 +39,6 @@ class CoordPicker(QtWidgets.QDialog):
     def initUI(self):
         desktop = QtWidgets.QApplication.desktop()
         desktopSize = desktop.screenGeometry()
-        self.setLayout(QtWidgets.QFormLayout())
         self.setGeometry(desktopSize)
         self.setWindowTitle("Coordinate Picker")
         self.setSizePolicy(QtWidgets.QSizePolicy.Maximum,
