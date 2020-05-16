@@ -51,15 +51,15 @@ class Fishing(QtCore.QThread):
 
         self.fishingPole.bobberXCoord = self.fishingPole.pointerXCoord
         self.fishingPole.bobberYCoord = self.fishingPole.pointerYCoord
-        self.searchRangeX = 10
+        self.searchRangeX = 5
         self.searchRangeY = 3
-        self.calibrated = False
 
     def setBobberColor(self, colorTuple):
         self.fishingPole.bobberColor = colorTuple
 
     def run(self):
         fishingPole = self.fishingPole
+        time.sleep(1)
         while self.active:
             if not self.executing:
                 self.executing = True
@@ -94,7 +94,7 @@ class Fishing(QtCore.QThread):
                             # the range to find the bobber in small
                             if not self.calibrated:
                                 self.calibrated = True
-                                self.searchRangeX = 1
+                                self.searchRangeX = 2
                                 self.searchRangeY = 1
                                 fishingPole.bobberXCoord = x
                                 fishingPole.bobberYCoord = y

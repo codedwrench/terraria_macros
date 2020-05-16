@@ -16,8 +16,9 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-fishPoleColors = {
-    "Fisher of Souls": (92, 70, 103)
+bobberColors = {
+    "Fisher of Souls": (92, 70, 103),
+    "Golden fishing rod": (122, 75, 8)
 }
 
 

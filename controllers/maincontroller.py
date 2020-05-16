@@ -17,16 +17,18 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import time
+from PyQt5 import QtWidgets, QtGui
+
 
 from controllers.fishing import Fishing
 from controllers.mining import Mining
 from controllers.rapidfire import RapidFire
 from models.choices import Choices
-from models.fishpole import fishPoleColors
+from models.fishpole import bobberColors
 from views.choicewindow import ChoiceWindow
 from views.coordpicker import CoordPicker
 
-from PyQt5 import QtWidgets, QtGui
 
 
 class MainController:
@@ -73,14 +75,13 @@ class MainController:
 
         widget = QtWidgets.QColorDialog(self.choiceWindow.window)
         i = 0
-        for key, value in fishPoleColors.items():
+        for key, value in bobberColors.items():
             widget.setCustomColor(i, QtGui.QColor(*value))
             i += 1
 
         widget.exec()
         selectedColor = widget.selectedColor()
         self.fishing.setBobberColor((selectedColor.red(), selectedColor.green(), selectedColor.blue()))
-
         self.fishing.active = True
         self.fishing.start()
 

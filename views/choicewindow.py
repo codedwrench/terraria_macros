@@ -18,10 +18,10 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-from PyQt5 import QtWidgets, uic
+from PyQt5 import QtWidgets, QtCore, uic
 
-from models.choices import Choices
 from views.aboutWindow import AboutWindow
+from models.choices import Choices
 
 
 class ChoiceWindow:
@@ -36,7 +36,6 @@ class ChoiceWindow:
         self.window.btnFish.clicked.connect(self.fishClicked)
         self.window.btnMine.clicked.connect(self.mineClicked)
         self.window.btnRapidFireLeft.clicked.connect(self.rapidFireLeftClicked)
-        self.window.btnRapidFireRight.clicked.connect(self.rapidFireRightClicked)
         self.window.actAboutQT.triggered.connect(self.showAboutQt)
         self.window.actAbout.triggered.connect(self.showAbout)
 
